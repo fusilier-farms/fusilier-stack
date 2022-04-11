@@ -1,138 +1,124 @@
-import { Link } from "@remix-run/react";
+import HomePageHero from '~/components/HomePageHero';
+import Navigation from '~/components/Navigation';
+import Footer from '~/components/Footer';
+import { useLoaderData, Link } from '@remix-run/react';
+import { LoaderFunction } from '@remix-run/node';
+import {getUser} from "~/utils/sessions.server";
 
-import { useOptionalUser } from "~/utils";
+export const loader: LoaderFunction = async ({ request }) => {
+    const user = await getUser(request);
+    return {
+        user,
+    };
+};
 
 export default function Index() {
-  const user = useOptionalUser();
-  return (
-    <main className="relative min-h-screen bg-white sm:flex sm:items-center sm:justify-center">
-      <div className="relative sm:pb-16 sm:pt-8">
-        <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-          <div className="relative shadow-xl sm:overflow-hidden sm:rounded-2xl">
-            <div className="absolute inset-0">
-              <img
-                className="h-full w-full object-cover"
-                src="https://user-images.githubusercontent.com/1500684/158276320-c46b661b-8eff-4a4d-82c6-cf296c987a12.jpg"
-                alt="BB King playing blues on his Les Paul guitar"
-              />
-              <div className="absolute inset-0 bg-[color:rgba(27,167,254,0.5)] mix-blend-multiply" />
-            </div>
-            <div className="lg:pb-18 relative px-4 pt-16 pb-8 sm:px-6 sm:pt-24 sm:pb-14 lg:px-8 lg:pt-32">
-              <h1 className="text-center text-6xl font-extrabold tracking-tight sm:text-8xl lg:text-9xl">
-                <span className="block uppercase text-blue-500 drop-shadow-md">
-                  Farm Stack
-                </span>
-              </h1>
-              <p className="mx-auto mt-6 max-w-lg text-center text-xl text-white sm:max-w-3xl">
-                Check the README.md file for instructions on how to get this
-                project deployed.
-              </p>
-              <div className="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">
-                {user ? (
-                  <Link
-                    to="/notes"
-                    className="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-blue-700 shadow-sm hover:bg-blue-50 sm:px-8"
-                  >
-                    View Notes for {user.email}
-                  </Link>
-                ) : (
-                  <div className="space-y-4 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5 sm:space-y-0">
-                    <Link
-                      to="/join"
-                      className="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-blue-700 shadow-sm hover:bg-blue-50 sm:px-8"
-                    >
-                      Sign up
-                    </Link>
-                    <Link
-                      to="/login"
-                      className="flex items-center justify-center rounded-md bg-blue-500 px-4 py-3 font-medium text-white hover:bg-blue-600  "
-                    >
-                      Log In
-                    </Link>
-                  </div>
-                )}
-              </div>
-              <a href="https://remix.run">
-                <img
-                  src="https://user-images.githubusercontent.com/1500684/158298926-e45dafff-3544-4b69-96d6-d3bcc33fc76a.svg"
-                  alt="Remix"
-                  className="mx-auto mt-16 w-full max-w-[12rem] md:max-w-[16rem]"
-                />
-              </a>
-            </div>
-          </div>
-        </div>
+    const { user } = useLoaderData();
 
-        <div className="mx-auto max-w-7xl py-2 px-4 sm:px-6 lg:px-8">
-          <div className="mt-6 flex flex-wrap justify-center gap-8">
-            {[
-              {
-                src: "https://user-images.githubusercontent.com/1500684/157764397-ccd8ea10-b8aa-4772-a99b-35de937319e1.svg",
-                alt: "Fly.io",
-                href: "https://fly.io",
-              },
-              {
-                src: "https://user-images.githubusercontent.com/1500684/158238105-e7279a0c-1640-40db-86b0-3d3a10aab824.svg",
-                alt: "PostgreSQL",
-                href: "https://www.postgresql.org/",
-              },
-              {
-                src: "https://user-images.githubusercontent.com/1500684/157764484-ad64a21a-d7fb-47e3-8669-ec046da20c1f.svg",
-                alt: "Prisma",
-                href: "https://prisma.io",
-              },
-              {
-                src: "https://user-images.githubusercontent.com/1500684/157764276-a516a239-e377-4a20-b44a-0ac7b65c8c14.svg",
-                alt: "Tailwind",
-                href: "https://tailwindcss.com",
-              },
-              {
-                src: "https://user-images.githubusercontent.com/1500684/157764454-48ac8c71-a2a9-4b5e-b19c-edef8b8953d6.svg",
-                alt: "Cypress",
-                href: "https://www.cypress.io",
-              },
-              {
-                src: "https://user-images.githubusercontent.com/1500684/157772386-75444196-0604-4340-af28-53b236faa182.svg",
-                alt: "MSW",
-                href: "https://mswjs.io",
-              },
-              {
-                src: "https://user-images.githubusercontent.com/1500684/157772447-00fccdce-9d12-46a3-8bb4-fac612cdc949.svg",
-                alt: "Vitest",
-                href: "https://vitest.dev",
-              },
-              {
-                src: "https://user-images.githubusercontent.com/1500684/157772662-92b0dd3a-453f-4d18-b8be-9fa6efde52cf.png",
-                alt: "Testing Library",
-                href: "https://testing-library.com",
-              },
-              {
-                src: "https://user-images.githubusercontent.com/1500684/157772934-ce0a943d-e9d0-40f8-97f3-f464c0811643.svg",
-                alt: "Prettier",
-                href: "https://prettier.io",
-              },
-              {
-                src: "https://user-images.githubusercontent.com/1500684/157772990-3968ff7c-b551-4c55-a25c-046a32709a8e.svg",
-                alt: "ESLint",
-                href: "https://eslint.org",
-              },
-              {
-                src: "https://user-images.githubusercontent.com/1500684/157773063-20a0ed64-b9f8-4e0b-9d1e-0b65a3d4a6db.svg",
-                alt: "TypeScript",
-                href: "https://typescriptlang.org",
-              },
-            ].map((img) => (
-              <a
-                key={img.href}
-                href={img.href}
-                className="flex h-16 w-32 justify-center p-1 grayscale transition hover:grayscale-0 focus:grayscale-0"
-              >
-                <img alt={img.alt} src={img.src} />
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-    </main>
-  );
+    return (
+        <>
+            <Navigation user={user} />
+            <HomePageHero />
+            <div className="relative bg-fusilier-tan">
+                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8 xl:grid xl:grid-cols-2 xl:grid-flow-col-dense xl:gap-x-8">
+                    <div className="relative pt-12 pb-64 sm:pt-24 sm:pb-64 xl:col-start-1 xl:pb-24">
+                        <h2 className="text-sm font-semibold tracking-wide uppercase">
+                            <span className="bg-gradient-to-r from-emerald-700 to-cyan-700 bg-clip-text text-transparent">
+                                Fresh Produce
+                            </span>
+                        </h2>
+                        <p className="mt-3 text-3xl font-extrabold text-stone-900">
+                            We proudly provide fresh produce from our family to
+                            yours.
+                        </p>
+                        <p className="mt-5 text-lg text-stone-700">
+                            We are proud to be fifth and sixth generation
+                            Fusilier's farming this great land. We, Mike and
+                            Kathy, manage the home farm with the help of our
+                            four children and their spouses. The home farm is
+                            220 acres at the edge of the Irish Hills in
+                            Manchester, Michigan.
+                        </p>
+                        <p className="mt-5 text-lg text-stone-700">
+                            Most of our farm is devoted and planted with our
+                            highest quality of produce that we proudly offer to
+                            you. Also, we have a large selection of flowers
+                            available for you to choose from! We have several
+                            ways that we provide you with produce and flowers.
+                            We attend several markets, have two stores open
+                            daily, and offer a CSA (Community Supported
+                            Agriculture) program to you.
+                        </p>
+                        <p className="mt-5 text-lg text-stone-700">
+                            We are very excited about the recent opportunities
+                            in providing fresh produce to a growing number of
+                            people. We attend several markets a week and we hope
+                            to see you at one of them! Besides our stores in
+                            Chelsea and Manchester, we go to farmers markets
+                            four days a week.
+                        </p>
+                        <ul className="text-stone-700 list-disc py-8">
+                            <li className="px-6 py-2 w-full">
+                                On Sundays, we attend the Birmingham Farmers
+                                Market.
+                            </li>
+                            <li className="px-6 py-2 w-full">
+                                On Tuesdays, we attend Detroit Eastern Market.
+                            </li>
+                            <li className="px-6 py-2 w-full">
+                                On Thursdays, we attend Northville Farmers
+                                Market.
+                            </li>
+                            <li className="px-6 py-2 w-full">
+                                Finally, on Saturdays we attend Detroit Eastern
+                                Market.
+                            </li>
+                        </ul>
+                        <p className="mt-5 text-lg text-stone-700">
+                            You could say we are busy, but there is nothing that
+                            would make us happier than to serve you the best
+                            produce. We are proud to be farmers and we hope to
+                            let you get to know us and our farm better. To see
+                            the whole list of markets we attend go to our
+                            Farmers Market tab for more information!
+                        </p>
+                    </div>
+                    <div className="relative pt-12 pb-64 sm:pt-24 sm:pb-64 xl:col-start-2 xl:pb-24 flex items-center justify-center">
+                        <img
+                            className="rounded shadow"
+                            src="https://s3.amazonaws.com/sfc-dynamic-content/gallery/1044/w500/139969560623.28.52.14.jpg"
+                            alt=""
+                        />
+                    </div>
+                </div>
+            </div>
+
+            {/* CTA Section */}
+            <div className="bg-white">
+                <div className="max-w-4xl mx-auto py-16 px-4 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 lg:flex lg:items-center lg:justify-between">
+                    <h2 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                        <span className="block">Ready to get started?</span>
+                        <span className="block bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
+                            Get in touch or create an account.
+                        </span>
+                    </h2>
+                    <div className="mt-6 space-y-4 sm:space-y-0 sm:flex sm:space-x-5">
+                        <Link
+                            to="/about-us"
+                            className="flex items-center justify-center bg-gradient-to-r from-emerald-600 to-cyan-600 bg-origin-border px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white hover:from-emerald-700 hover:to-cyan-700"
+                        >
+                            Learn more
+                        </Link>
+                        <Link
+                            to="/produce-home-delivery"
+                            className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-emerald-800 bg-cyan-50 hover:bg-emerald-100"
+                        >
+                            Get started
+                        </Link>
+                    </div>
+                </div>
+            </div>
+            <Footer />
+        </>
+    );
 }
