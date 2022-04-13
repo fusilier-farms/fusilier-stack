@@ -5,9 +5,9 @@ import {
     Outlet,
     Scripts,
     ScrollRestoration,
-} from 'remix';
+} from '@remix-run/react';
+import type { MetaFunction, LinksFunction } from '@remix-run/node';
 import tailwind from './styles/tailwind.css';
-import type { MetaFunction, LinksFunction } from 'remix';
 
 export const meta: MetaFunction = () => {
     return { title: 'New Remix App' };

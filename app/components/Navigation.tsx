@@ -1,5 +1,5 @@
 import { Fragment, useState } from 'react';
-import { Link } from 'remix';
+import { Link } from '@remix-run/react';
 import truckLogo from '~/images/logo_truck.png';
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react';
 import {

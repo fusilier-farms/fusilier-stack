@@ -1,4 +1,4 @@
-import { Link } from 'remix';
+import { Link } from '@remix-run/react';
 import { Popover } from '@headlessui/react';
 import heroImage from '../images/hero-image.jpg';
 
