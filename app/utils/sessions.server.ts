@@ -5,7 +5,7 @@ import {
 import {lastOrder, medusaAuth} from '~/utils/cookies';
 
 type LoginForm = {
-    username: string;
+    email: string;
     password: string;
 };
 
