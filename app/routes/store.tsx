@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Fragment } from 'react';
 import { LoaderFunction, redirect, ActionFunction } from '@remix-run/node';
 import { useLoaderData, useActionData } from '@remix-run/react'

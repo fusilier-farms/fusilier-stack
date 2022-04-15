@@ -1,3 +1,4 @@
+// @ts-nocheck
 import HomePageHero from '~/components/HomePageHero';
 import Navigation from '~/components/Navigation';
 import Footer from '~/components/Footer';

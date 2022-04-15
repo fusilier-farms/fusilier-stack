@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Fragment } from 'react';
 import { useLoaderData } from '@remix-run/react';
 import { StarIcon } from '@heroicons/react/solid';

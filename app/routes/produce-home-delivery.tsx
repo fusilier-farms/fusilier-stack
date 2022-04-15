@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Link } from "@remix-run/react";
 import heroImage from "../images/grapes.png";
 

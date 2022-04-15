@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { LockClosedIcon } from '@heroicons/react/solid';
 import logoRegister from '../images/register-logo.png';
 import type { ActionFunction } from '@remix-run/node';

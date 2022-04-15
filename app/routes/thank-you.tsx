@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Navigation from '~/components/Navigation';
 import Footer from '~/components/Footer';
 import FooterSocial from "~/components/FooterSocial";

@@ -3,6 +3,9 @@ import {
     redirect,
 } from "@remix-run/node";
 import {lastOrder, medusaAuth} from '~/utils/cookies';
+import { Address } from "@medusajs/medusa/dist/models/address";
+import { Order } from "@medusajs/medusa/dist/models/order";
+import { CustomerGroup } from "@medusajs/medusa/dist/models/customer-group";
 
 type LoginForm = {
     email: string;
@@ -19,7 +22,7 @@ type LoginForm = {
 //     return { id: user.id, username };
 // }
 
-export async function login(medusa, {
+export async function login(medusa: { auth: { authenticate: Function } }, {
     email,
     password,
 }: LoginForm) {

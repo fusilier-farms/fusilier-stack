@@ -1,3 +1,4 @@
+// @ts-nocheck
 import footerLogo from '../images/footer_logo_light.png';
 import footerBackground from '../images/footer-one-bg 1.png';
 import {

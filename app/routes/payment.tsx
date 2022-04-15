@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { ClientOnly } from 'remix-utils';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 import { useLoaderData} from '@remix-run/react';

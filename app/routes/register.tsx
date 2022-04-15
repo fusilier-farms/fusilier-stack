@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useState } from 'react';
 import type { ActionFunction, LoaderFunction, redirect } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
