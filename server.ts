@@ -6,7 +6,7 @@ import { createRequestHandler } from "@remix-run/express";
 import Medusa from "@medusajs/medusa-js";
 
 const BASE_URL = process.env.BASE_URL || 'http://localhost:9000';
-const client = new Medusa({ baseUrl: BASE_URL });
+const client = new Medusa({ baseUrl: BASE_URL, maxRetries: 5 });
 
 const app = express();
 
