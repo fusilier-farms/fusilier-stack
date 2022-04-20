@@ -8,6 +8,7 @@ import {getUser} from "~/utils/sessions.server";
 
 export const loader: LoaderFunction = async ({ request }) => {
     const user = await getUser(request);
+    console.log('user', user);
     return {
         user,
     };
