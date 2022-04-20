@@ -12,7 +12,7 @@ allowed_public_ports = [ ]
 auto_rollback = true
 
 [[services]]
-internal_port = 8_080
+internal_port = 8080
 processes = [ "app" ]
 protocol = "tcp"
 script_checks = [ ]
@@ -36,13 +36,3 @@ script_checks = [ ]
   interval = "15s"
   restart_limit = 0
   timeout = "2s"
-
-  [[services.http_checks]]
-  interval = 10_000
-  grace_period = "5s"
-  method = "get"
-  path = "/healthcheck"
-  protocol = "http"
-  timeout = 2_000
-  tls_skip_verify = false
-  headers = { }
