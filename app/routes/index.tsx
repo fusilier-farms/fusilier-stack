@@ -26,7 +26,7 @@ export default function Index() {
                     <div className="relative pt-12 pb-64 sm:pt-24 sm:pb-64 xl:col-start-1 xl:pb-24">
                         <h2 className="text-sm font-semibold tracking-wide uppercase">
                             <span className="bg-gradient-to-r from-emerald-700 to-cyan-700 bg-clip-text text-transparent">
-                                Fresh Produce
+                                Fresh Producee
                             </span>
                         </h2>
                         <p className="mt-3 text-3xl font-extrabold text-stone-900">
