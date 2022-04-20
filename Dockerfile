@@ -42,4 +42,6 @@ COPY --from=build /myapp/build /myapp/build
 COPY --from=build /myapp/public /myapp/public
 ADD . .
 
+EXPOSE 8080
+
 CMD ["yarn", "start"]
