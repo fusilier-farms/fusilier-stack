@@ -3,6 +3,10 @@ import express from "express";
 import compression from "compression";
 import morgan from "morgan";
 import { createRequestHandler } from "@remix-run/express";
+import Medusa from "@medusajs/medusa-js";
+
+const BASE_URL = process.env.BASE_URL || 'http://localhost:9000';
+const client = new Medusa({ baseUrl: BASE_URL });
 
 const app = express();
 
@@ -76,6 +80,7 @@ app.all(
         purgeRequireCache();
         const requestHandler = createRequestHandler({
           build: require(BUILD_DIR),
+          getLoadContext() { return { medusa: client }},
           mode: MODE,
         });
         return requestHandler(...args);
